@@ -1,0 +1,38 @@
+<!--watchify client/app.js -o client/bundle.js
+browserify client/app.js -o client/bundle.js
+
+const fs = require('fs');
+let fileData;
+fs.readFile('./client/adder.html', (err, data) => fileData = data);
+… could also have been written out with the function keyword:
+
+let fileData;
+fs.readFile('./client/adder.html', function(err, data) {
+  fileData = data;
+});
+
+Object.keys(fs).filter(key => key.toLowerCase().indexOf('file')!=-1);
+Object.keys(fs).filter(function(key){
+	return key.toLowerCase().indexOf('file')!=-1
+});
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<form id='form-numbers'>
+	<div>
+		<input type="text" id="input-num1" autocomplete="off" />
+	</div>
+	<div>
+		<input type="text" id="input-num2" autocomplete="off" />
+	</div>
+	<hr>
+	<div class='sum'>?</div>
+	<button>Calculate!</button>
+</form>
+<script src="bundle.js"></script>
+</body>
+</html>
